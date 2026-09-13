@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Register</title>
+
+<link rel="stylesheet"
+href="/static/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<script src="/static/script.js"></script>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="logo">
+
+Placement Management System
+
+</div>
+
+<div class="nav-links">
+
+<a href="/">
+
+<button class="nav-btn">
+
+Home
+
+</button>
+
+</a>
+
+<a href="/register/">
+
+<button class="nav-btn active-nav">
+
+Student Registration
+
+</button>
+
+</a>
+
+<a href="/login/">
+
+<button class="nav-btn">
+
+Student Login
+
+</button>
+
+</a>
+
+<a href="/admin-login/">
+
+<button class="nav-btn">
+
+Admin Login
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+<div class="page-content">
+
+<div class="container">
+
+<h1>Student Registration</h1>
+
+<form method="POST"
+onsubmit="return validateForm()">
+
+{% csrf_token %}
+
+<div class="input-group">
+
+<input type="text"
+name="student_id"
+placeholder="USN"
+value="{{student_id}}"
+
+{% if usn_error %}
+class="input-error"
+{% endif %}
+>
+
+{% if usn_error %}
+
+<p class="field-error">
+
+{{usn_error}}
+
+</p>
+
+{% endif %}
+
+</div>
+
+<input type="text"
+name="name"
+placeholder="Full Name"
+value="{{name}}">
+
+<div class="input-group">
+
+<input type="email"
+name="email"
+placeholder="Email"
+value="{{email}}"
+
+{% if email_error %}
+class="input-error"
+{% endif %}
+>
+
+{% if email_error %}
+
+<p class="field-error">
+
+{{email_error}}
+
+</p>
+
+{% endif %}
+
+</div>
+
+<div class="password-box">
+
+<input type="password"
+id="password"
+name="password"
+placeholder="Password"
+value="{{password}}">
+
+<span class="eye-btn"
+onclick="togglePassword('password', this)">
+
+<i class="fa-solid fa-eye-slash"></i>
+
+</span>
+
+</div>
+
+<input type="text"
+name="branch"
+placeholder="Branch"
+value="{{branch}}">
+
+<input type="number"
+step="0.01"
+id="cgpa"
+name="cgpa"
+placeholder="CGPA"
+value="{{cgpa}}">
+
+<button type="submit">
+
+Register
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

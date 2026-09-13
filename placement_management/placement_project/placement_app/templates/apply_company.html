@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Apply Company</title>
+
+<link rel="stylesheet"
+href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="logo">
+
+Placement Management System
+
+</div>
+
+<div class="nav-links">
+
+<a href="/">
+
+<button class="nav-btn">
+
+Home
+
+</button>
+
+</a>
+
+<a href="/register/">
+
+<button class="nav-btn">
+
+Student Registration
+
+</button>
+
+</a>
+
+<a href="/login/">
+
+<button class="nav-btn active-nav">
+
+Student Login
+
+</button>
+
+</a>
+
+<a href="/admin-login/">
+
+<button class="nav-btn">
+
+Admin Login
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+<div class="page-content">
+
+<div class="container">
+
+<h1>
+
+Apply for Company
+
+</h1>
+
+<h2 class="company-name">
+
+{{company.company_name}}
+
+</h2>
+
+<p class="resume-text">
+
+Upload Resume (PDF only)
+
+</p>
+
+<form method="POST"
+enctype="multipart/form-data">
+
+{% csrf_token %}
+
+<input type="file"
+name="resume"
+accept=".pdf"
+required>
+
+<button type="submit">
+
+Submit Application
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

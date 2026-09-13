@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Student Dashboard</title>
+
+<link rel="stylesheet"
+href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="logo">
+
+Placement Management System
+
+</div>
+
+<div class="nav-links">
+
+<a href="/">
+
+<button class="nav-btn">
+
+Home
+
+</button>
+
+</a>
+
+<a href="/register/">
+
+<button class="nav-btn">
+
+Student Registration
+
+</button>
+
+</a>
+
+<a href="/login/">
+
+<button class="nav-btn active-nav">
+
+Student Login
+
+</button>
+
+</a>
+
+<a href="/admin-login/">
+
+<button class="nav-btn">
+
+Admin Login
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+<div class="dashboard-container">
+
+<h1>
+
+Available Companies
+
+</h1>
+{% if success %}
+
+<p class="success-message">
+
+{{success}}
+
+</p>
+
+{% endif %}
+
+<table>
+
+<tr>
+
+<th>
+
+Company
+
+</th>
+
+<th>
+
+Role
+
+</th>
+
+<th>
+
+Package
+
+</th>
+
+<th>
+
+Apply
+
+</th>
+
+</tr>
+
+{% for company in companies %}
+
+<tr>
+
+<td>
+
+{{company.company_name}}
+
+</td>
+
+<td>
+
+{{company.role}}
+
+</td>
+
+<td>
+
+₹ {{company.package}}
+
+</td>
+
+<td>
+
+{% if company.company_id in applied_company_ids %}
+
+<button disabled>
+
+Applied
+
+</button>
+
+{% else %}
+
+<a href="/apply/{{company.company_id}}/">
+
+<button class="apply-btn">
+
+Apply
+
+</button>
+
+</a>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br><br>
+
+<h2>
+
+Applied Companies
+
+</h2>
+
+<table>
+
+<tr>
+
+<th>
+
+Company
+
+</th>
+
+<th>
+
+Status
+
+</th>
+
+<th>
+
+Resume
+
+</th>
+
+<th>
+
+Withdraw
+
+</th>
+
+</tr>
+
+{% for application in applications %}
+
+<tr>
+
+<td>
+
+{{application.company.company_name}}
+
+</td>
+
+<td>
+
+Applied
+
+</td>
+
+<td>
+
+<a href="{{application.resume.url}}"
+target="_blank">
+
+<button class="apply-btn">
+
+View Resume
+
+</button>
+
+</a>
+
+</td>
+
+<td>
+
+<form method="POST"
+action="/withdraw/{{application.id}}/"
+onsubmit="return confirm('Are you sure to withdraw application?')">
+
+{% csrf_token %}
+
+<button type="submit">
+
+Withdraw
+
+</button>
+
+</form>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+
+</html>

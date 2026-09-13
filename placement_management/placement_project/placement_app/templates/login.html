@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Student Login</title>
+
+<link rel="stylesheet"
+href="/static/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<script src="/static/script.js"></script>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="logo">
+
+Placement Management System
+
+</div>
+
+<div class="nav-links">
+
+<a href="/">
+
+<button class="nav-btn">
+
+Home
+
+</button>
+
+</a>
+
+<a href="/register/">
+
+<button class="nav-btn">
+
+Student Registration
+
+</button>
+
+</a>
+
+<a href="/login/">
+
+<button class="nav-btn active-nav">
+
+Student Login
+
+</button>
+
+</a>
+
+<a href="/admin-login/">
+
+<button class="nav-btn">
+
+Admin Login
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+<div class="page-content">
+
+<div class="container">
+
+<h1>Student Login</h1>
+
+{% if error %}
+
+<p class="error-message">
+
+{{error}}
+
+</p>
+
+{% endif %}
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input type="email"
+name="email"
+placeholder="Email">
+
+<div class="password-box">
+
+<input type="password"
+id="login_password"
+name="password"
+placeholder="Password">
+
+<span class="eye-btn"
+onclick="togglePassword('login_password', this)">
+
+<i class="fa-solid fa-eye-slash"></i>
+
+</span>
+
+</div>
+
+<button type="submit">
+
+Login
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
